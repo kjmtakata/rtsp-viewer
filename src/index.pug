@@ -5,9 +5,9 @@ html(lang="en")
     link(rel="stylesheet" href="base.css")
     script(src="https://cdn.jsdelivr.net/gh/phoboslab/jsmpeg/jsmpeg.min.js")
   body
-    each wss_port in wss_ports
-      canvas(id=wss_port)
+    each ws_url in ws_urls
+      canvas(id=ws_url)
       script. 
-        new JSMpeg.Player("ws://" + window.location.hostname + ":#{wss_port}", {
-          canvas: document.getElementById("#{wss_port}")
+        new JSMpeg.Player("#{ws_url}", {
+          canvas: document.getElementById("#{ws_url}")
         });
