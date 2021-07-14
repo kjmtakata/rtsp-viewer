@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title= "Security Cam Viewer"
+    link(rel="stylesheet" href="base.css")
+    script(src="https://cdn.jsdelivr.net/gh/phoboslab/jsmpeg/jsmpeg.min.js")
+  body
+    each wss_port in wss_ports
+      canvas(id=wss_port)
+      script. 
+        new JSMpeg.Player("ws://" + window.location.hostname + ":#{wss_port}", {
+          canvas: document.getElementById("#{wss_port}")
+        });
