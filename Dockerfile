@@ -14,5 +14,4 @@ COPY src src
 
 WORKDIR /usr/app/src
 
-EXPOSE 8888
 CMD [ "node", "server.js" ]
