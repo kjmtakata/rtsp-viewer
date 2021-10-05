@@ -1,13 +1,8 @@
-FROM node:16
-
-WORKDIR /usr/app
-
+FROM node:latest
+WORKDIR /app
 COPY package*.json ./
-    
 RUN npm install
-
-COPY src src
-
-WORKDIR /usr/app/src
-
-CMD [ "node", "server.js" ]
+COPY . .
+RUN npm run build && \
+    npm install -g serve
+CMD ["serve", "-s", "build"]
